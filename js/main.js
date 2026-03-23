@@ -124,3 +124,29 @@ languageCards.forEach((card, index) => {
 // Console message for developers
 console.log('%cMichał Wojtanowski - Personal CV', 'font-size: 20px; font-weight: bold; color: #1a1a2e;');
 console.log('%cBuilt with HTML, CSS, and JavaScript', 'font-size: 14px; color: #555555;');
+
+// Rotating Image Feature
+const heroImages = document.querySelectorAll('.hero-image');
+const imagePaths = [
+    'images/Myzi-03.jpg',
+    'images/Myzi-11.jpg',
+    'images/Myzi-16.jpg',
+    'images/Myzi-24.jpg'
+];
+let currentIndex = 0;
+
+function rotateImages() {
+    // Fade out current image
+    heroImages[currentIndex].classList.remove('active');
+    
+    // Calculate next image index
+    currentIndex = (currentIndex + 1) % heroImages.length;
+    
+    // Fade in next image after fade out completes
+    setTimeout(() => {
+        heroImages[currentIndex].classList.add('active');
+    }, 400); // 0.4s fade duration
+}
+
+// Start rotation every 4 seconds
+setInterval(rotateImages, 4000);
