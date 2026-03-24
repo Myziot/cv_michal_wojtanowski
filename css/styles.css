@@ -129,9 +129,10 @@ body {
 }
 
 .hero-image-container {
+    position: relative;
     flex-shrink: 0;
     width: 280px;
-    height: 380px;
+    height: 420px;
 }
 
 .hero-content {
