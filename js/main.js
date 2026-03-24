@@ -4,8 +4,10 @@ const navMenu = document.querySelector('.nav-menu');
 
 if (hamburger) {
     hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
+        const isActive = hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        // Update aria-expanded for accessibility
+        hamburger.setAttribute('aria-expanded', isActive.toString());
     });
 
     // Close menu when clicking on a link
@@ -13,6 +15,8 @@ if (hamburger) {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            // Update aria-expanded for accessibility
+            hamburger.setAttribute('aria-expanded', 'false');
         });
     });
 }
@@ -127,12 +131,6 @@ console.log('%cBuilt with HTML, CSS, and JavaScript', 'font-size: 14px; color: #
 
 // Rotating Image Feature
 const heroImages = document.querySelectorAll('.hero-image');
-const imagePaths = [
-    'images/Myzi-03.jpg',
-    'images/Myzi-11.jpg',
-    'images/Myzi-16.jpg',
-    'images/Myzi-24.jpg'
-];
 let currentIndex = 0;
 
 function rotateImages() {
